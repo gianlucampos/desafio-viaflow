@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  *
- * @author Gianluca
+ * @author gianlucampos
  */
 @RestController
 @RequestMapping(path = "itinerario")
 public class MobilidadeController {
-
+    
     @GetMapping
     public String list() {
         return "Hello World!";
