@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @RestController
 @RequestMapping(path = "itinerario")
 public class MobilidadeController {
-    
+
     @GetMapping
     public String list() {
         return "Hello World!";
-    }
+        }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
