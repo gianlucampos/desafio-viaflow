@@ -3,13 +3,17 @@ package com.br.desafio.viaflow.model;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
  ** Classe que representa o ponto de parada de ônibus.
  * <ul><span style="text-decoration: underline;font-weight: bolder">Atributos</span>
- * <li>pontos - Descreve as coordenadas por onde o ônibus vai passar</li>
+ * <li>indice - Identificador de ponto de parada oriundo da API
+ * (mobilidade)</li>
  * <li>latitude - Descreve a latitude</li>
  * <li>longitude - Descreve a longitude</li>
  * </ul>
@@ -22,9 +26,11 @@ import javax.persistence.Table;
 public class PontoTransporte implements Serializable {
 
     @Id
-//    @SequenceGenerator(name = "seqpontotransporte", sequenceName = "seqpontotransporte", allocationSize = 1)
-//    @GeneratedValue(strategy = GenerationType.AUTO, generator = "seqpontotransporte")
+    @SequenceGenerator(name = "seqpontotransporte", sequenceName = "seqpontotransporte", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "seqpontotransporte")
     private Long id;
+    @Column
+    private Long indice;
     @Column
     private Double latidude;
     @Column
@@ -36,6 +42,14 @@ public class PontoTransporte implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getIndice() {
+        return indice;
+    }
+
+    public void setIndice(Long indice) {
+        this.indice = indice;
     }
 
     public Double getLatidude() {
