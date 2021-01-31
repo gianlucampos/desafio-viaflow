@@ -3,7 +3,7 @@ package com.br.desafio.viaflow.service;
 import com.br.desafio.viaflow.dto.LinhaTransporteDTO;
 import com.br.desafio.viaflow.model.LinhaTransporte;
 import com.br.desafio.viaflow.repository.LinhaTransporteRepository;
-import com.br.desafio.viaflow.service.client.LinhaTransporteClient;
+import com.br.desafio.viaflow.service.client.MobilidadeClient;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,8 @@ public class LinhaTransporteService {
     //Busca da API as linhas de ônibus
     public void importLinhasTranporte() {
         try {
-            LinhaTransporteClient cliente = new LinhaTransporteClient();
-            List<LinhaTransporteDTO> linhas = cliente.listLinhasTransporte();
+            MobilidadeClient cliente = new MobilidadeClient();
+            List<LinhaTransporteDTO> linhas = cliente.buscaLinhasTransporte();
             for (LinhaTransporteDTO linhaDTO : linhas) {
                 Optional<LinhaTransporte> optional = repository.findById(Long.parseLong(linhaDTO.getId()));
                 LinhaTransporte linha = new LinhaTransporte();

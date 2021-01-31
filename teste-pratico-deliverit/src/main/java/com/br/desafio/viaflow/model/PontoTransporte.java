@@ -3,10 +3,7 @@ package com.br.desafio.viaflow.model;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -25,8 +22,8 @@ import javax.persistence.Table;
 public class PontoTransporte implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "seqpontotransporte", sequenceName = "seqpontotransporte", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "seqpontotransporte")
+//    @SequenceGenerator(name = "seqpontotransporte", sequenceName = "seqpontotransporte", allocationSize = 1)
+//    @GeneratedValue(strategy = GenerationType.AUTO, generator = "seqpontotransporte")
     private Long id;
     @Column
     private Double latidude;

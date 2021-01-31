@@ -1,7 +1,9 @@
 package com.br.desafio.viaflow.controller;
 
+import com.br.desafio.viaflow.dto.ItinerarioDTO;
 import com.br.desafio.viaflow.model.LinhaTransporte;
 import com.br.desafio.viaflow.service.LinhaTransporteService;
+import com.br.desafio.viaflow.service.client.MobilidadeClient;
 import java.util.HashMap;
 import java.util.List;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,11 +29,16 @@ public class MobilidadeController {
     private LinhaTransporteService service;
 
     @GetMapping()
-    public List<LinhaTransporte> init() {
-        service.importLinhasTranporte();
-        return listLinhasTransporte();
+    public ItinerarioDTO init() {
+        try {
+            MobilidadeClient cliente = new MobilidadeClient();
+            return cliente.buscaItinerario();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
     }
-
+    
     @GetMapping(path = "linhas")
     public List<LinhaTransporte> listLinhasTransporte() {
         return service.listAll();

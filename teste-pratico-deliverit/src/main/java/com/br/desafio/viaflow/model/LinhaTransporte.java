@@ -1,9 +1,13 @@
 package com.br.desafio.viaflow.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -27,6 +31,9 @@ public class LinhaTransporte implements Serializable {
     private String codigo;
     @Column
     private String nome;
+    @OneToMany
+    @JoinColumn(name = "LINHATRANSPORTEID", referencedColumnName = "ID")
+    private List<PontoTransporte> pontos = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -50,6 +57,14 @@ public class LinhaTransporte implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public List<PontoTransporte> getPontos() {
+        return pontos;
+    }
+
+    public void setPontos(List<PontoTransporte> pontos) {
+        this.pontos = pontos;
     }
 
 }
