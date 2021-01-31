@@ -8,7 +8,7 @@ DROP SEQUENCE IF EXISTS seqlinhatransporte,seqitinerario,seqpontotransporte;
 
 CREATE TABLE linhatransporte (
 	id int8 NOT NULL,
-	codigo int8 NULL,
+	codigo varchar(255) NULL,
 	nome varchar(255) NULL,
 	CONSTRAINT linhatransporte_pkey PRIMARY KEY (id)
 );
