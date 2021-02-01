@@ -2,7 +2,6 @@ package com.br.desafio.viaflow.service;
 
 import com.br.desafio.viaflow.dto.ItinerarioDTO;
 import com.br.desafio.viaflow.dto.PontoTransporteDTO;
-import com.br.desafio.viaflow.model.LinhaTransporte;
 import com.br.desafio.viaflow.model.PontoTransporte;
 import com.br.desafio.viaflow.repository.LinhaTransporteRepository;
 import com.br.desafio.viaflow.repository.PontoTransporteRepository;
@@ -27,6 +26,7 @@ public class PontoTransporteService {
     public void importItinerario() {
         try {
             MobilidadeClient cliente = new MobilidadeClient();
+            //Buscar por Id da linha informado
             ItinerarioDTO itinerarioDTO = cliente.buscaItinerario();
 
             for (PontoTransporteDTO pontoDTO : itinerarioDTO.getPontos()) {
