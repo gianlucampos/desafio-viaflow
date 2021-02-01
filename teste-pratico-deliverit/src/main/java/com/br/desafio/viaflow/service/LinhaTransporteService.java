@@ -46,7 +46,7 @@ public class LinhaTransporteService {
         return repository.findAll();
     }
 
-    public List<LinhaTransporte> listAllByName(String name) {
+    public List<LinhaTransporte> findByName(String name) {
         return repository.findByName(name);
     }
 
