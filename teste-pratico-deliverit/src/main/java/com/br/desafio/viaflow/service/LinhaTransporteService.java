@@ -50,4 +50,8 @@ public class LinhaTransporteService {
         return repository.findByName(name);
     }
 
+    public List<LinhaTransporte> findByRadious(Double latitude, Double longitude, Long raio) {
+        return repository.findByRadious(latitude, longitude, raio);
+    }
+
 }

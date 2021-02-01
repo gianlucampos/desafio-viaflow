@@ -30,3 +30,4 @@ CREATE SEQUENCE seqpontotransporte
 	START 1
 	CACHE 1
 	NO CYCLE;
+

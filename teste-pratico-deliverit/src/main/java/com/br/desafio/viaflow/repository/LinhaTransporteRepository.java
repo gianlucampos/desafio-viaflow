@@ -21,4 +21,10 @@ public interface LinhaTransporteRepository extends JpaRepository<LinhaTransporte
     @Query("SELECT l FROM LinhaTransporte l WHERE lower(l.nome) like :nome")
     public List<LinhaTransporte> findByName(@Param("nome") String nome);
 
+    @Query(value = "SELECT l.* FROM pontotransporte p INNER JOIN linhatransporte l ON l.id = p.linhatransporteid "
+            + "WHERE calculate_distance(p.latidude, p.longitude, :latitude, :longitude, 'K') <= :raio "
+            + "GROUP BY l.id", nativeQuery = true)
+    List<LinhaTransporte> findByRadious(@Param("latitude") Double latitude, @Param("longitude") Double longitude,
+            @Param("raio") Long raio);
+
 }
