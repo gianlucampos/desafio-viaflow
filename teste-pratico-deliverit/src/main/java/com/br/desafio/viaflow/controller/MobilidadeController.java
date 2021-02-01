@@ -1,6 +1,7 @@
 package com.br.desafio.viaflow.controller;
 
 import com.br.desafio.viaflow.service.LinhaTransporteService;
+import com.br.desafio.viaflow.service.PontoTransporteService;
 import com.br.desafio.viaflow.service.client.MobilidadeClient;
 import java.util.HashMap;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,20 +25,31 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class MobilidadeController {
 
     @Autowired
-    private LinhaTransporteService serviceLinhaTransporte;
+    private LinhaTransporteService serviceLinha;
+    @Autowired
+    private PontoTransporteService servicePonto;
 
     @GetMapping
     public ResponseEntity init() {
-//        service.importLinhasTranporte();
+//        serviceLinha.importLinhasTranporte();
+//        servicePonto.importItinerario();
         return listLinhasTransporte();
     }
 
     @GetMapping(path = "linhas")
     public ResponseEntity listLinhasTransporte() {
-        if (serviceLinhaTransporte.listAll().isEmpty()) {
+        if (serviceLinha.listAll().isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
-        return ResponseEntity.ok(serviceLinhaTransporte.listAll());
+        return ResponseEntity.ok(serviceLinha.listAll());
+    }
+    
+    @GetMapping(path = "itinerario")
+    public ResponseEntity listItinerario() {
+        if (serviceLinha.listAll().isEmpty()) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return ResponseEntity.ok(servicePonto.listAll());
     }
 
     @GetMapping(path = "linhas/import")

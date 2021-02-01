@@ -1,12 +1,9 @@
 package com.br.desafio.viaflow.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -14,10 +11,7 @@ import javax.persistence.Table;
  *
  * <ul><span style="text-decoration: underline;font-weight: bolder">Atributos</span>
  * <li>codigo - Código da linha do ônibus</li>
- * <li>linha - Nome da linha do ônibus</li>
- * Foi utilizado ManyToMany porque cada ponto oriundo da API possui indices
- * diferentes
- * <li>pontos - Descreve as coordenadas por onde o ônibus vai passar</li>
+ * <li>nome - Nome da linha do ônibus</li>
  *
  * </ul>
  *
@@ -33,8 +27,6 @@ public class LinhaTransporte implements Serializable {
     private String codigo;
     @Column
     private String nome;
-    @ManyToMany
-    private List<PontoTransporte> pontos = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -60,16 +52,5 @@ public class LinhaTransporte implements Serializable {
         this.nome = nome;
     }
 
-    public List<PontoTransporte> getPontos() {
-        return pontos;
-    }
-
-    public void setPontos(List<PontoTransporte> pontos) {
-        this.pontos = pontos;
-    }
-
-    public void addPonto(PontoTransporte ponto) {
-        this.pontos.add(ponto);
-    }
 
 }

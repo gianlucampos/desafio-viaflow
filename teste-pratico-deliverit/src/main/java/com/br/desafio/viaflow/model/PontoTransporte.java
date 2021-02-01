@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -16,6 +18,7 @@ import javax.persistence.Table;
  * (mobilidade)</li>
  * <li>latitude - Descreve a latitude</li>
  * <li>longitude - Descreve a longitude</li>
+ * <li>linhaTransporte - Descreve a linha por onde os pontos irão passar</li>
  * </ul>
  *
  *
@@ -35,6 +38,9 @@ public class PontoTransporte implements Serializable {
     private Double latidude;
     @Column
     private Double longitude;
+    @ManyToOne
+    @JoinColumn(name="LINHATRANSPORTEID",referencedColumnName = "ID")
+    private LinhaTransporte linhaTransporte;
 
     public Long getId() {
         return id;
@@ -66,6 +72,14 @@ public class PontoTransporte implements Serializable {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    public LinhaTransporte getLinhaTransporte() {
+        return linhaTransporte;
+    }
+
+    public void setLinhaTransporte(LinhaTransporte linhaTransporte) {
+        this.linhaTransporte = linhaTransporte;
     }
 
 }
