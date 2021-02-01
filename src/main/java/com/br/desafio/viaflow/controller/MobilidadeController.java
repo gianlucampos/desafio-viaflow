@@ -29,8 +29,6 @@ public class MobilidadeController {
 
     @GetMapping
     public ResponseEntity init() {
-//        serviceLinha.importLinhasTranporte();
-//        servicePonto.importItinerario();
         return listLinhasTransporte();
     }
 
@@ -73,8 +71,8 @@ public class MobilidadeController {
     @GetMapping(path = "linhas/import")
     public ResponseEntity testaImportLinhas() {
         try {
-            MobilidadeClient cliente = new MobilidadeClient();
-            return ResponseEntity.ok(cliente.buscaLinhasTransporte());
+            serviceLinha.importLinhasTranporte();
+            return new ResponseEntity(HttpStatus.OK);
         } catch (Exception ex) {
             ex.printStackTrace();
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -84,8 +82,8 @@ public class MobilidadeController {
     @GetMapping(path = "itinerario/import")
     public ResponseEntity testaImportItinerario() {
         try {
-            MobilidadeClient cliente = new MobilidadeClient();
-            return ResponseEntity.ok(cliente.buscaItinerario());
+            serviceLinha.importLinhasTranporte();
+            return new ResponseEntity(HttpStatus.OK);
         } catch (Exception ex) {
             ex.printStackTrace();
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
