@@ -4,7 +4,6 @@ import com.br.desafio.viaflow.model.LinhaTransporte;
 import com.br.desafio.viaflow.model.PontoTransporte;
 import com.br.desafio.viaflow.service.LinhaTransporteService;
 import com.br.desafio.viaflow.service.PontoTransporteService;
-import com.br.desafio.viaflow.service.client.MobilidadeClient;
 import java.util.List;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
