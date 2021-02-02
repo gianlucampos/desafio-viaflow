@@ -81,7 +81,7 @@ public class MobilidadeController {
     @GetMapping(path = "itinerario/import")
     public ResponseEntity testaImportItinerario() {
         try {
-            serviceLinha.importLinhasTranporte();
+            servicePonto.importItinerario();
             return new ResponseEntity(HttpStatus.OK);
         } catch (Exception ex) {
             ex.printStackTrace();
