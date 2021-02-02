@@ -51,16 +51,34 @@ $ docker-compose down
 Recomendo utilizar uma ferramenta de teste de serviços RestFul como [Postman](https://www.postman.com/downloads/) ou [Insomnia](https://insomnia.rest/download/).
 
 ## Endpoints para teste
-Listagem de linhas cadastradas [@GET] **http://localhost:8082/mobilidade/linhas**
+Listagem de linhas cadastradas [@GET]  
+**http://localhost:8082/mobilidade/linhas**  
 
-Listagem de linhas por Nome [@GET] **http://localhost:8082/mobilidade/linhas{nome}**
+Listagem de linhas por Nome [@GET]  
+**http://localhost:8082/mobilidade/linhas{nome}**  
+__Params__   
+String nome  
 
-Listagem de linhas por Coordenadas [@GET] **http://localhost:8082/mobilidade/linhas/{latitude}/{longitude}/{raio}**
+Listagem de linhas por Coordenadas [@GET]  
+**http://localhost:8082/mobilidade/linhas/{latitude}/{longitude}/{raio}**  
+__Params__  
+Double Latitude,Longitude  
+Long Raio  
 
-Listagem de itinerario cadastrados [@GET] **http://localhost:8082/mobilidade/itinerario**
+Listagem de itinerario cadastrados [@GET]  
+**http://localhost:8082/mobilidade/itinerario**
 
-Importa linhas da API [@GET] **http://localhost:8082/mobilidade/linhas/import**
+Listagem de itinerario por Linha [@GET]  
+**http://localhost:8082/mobilidade/itinerario/{idLinha}**  
+__Params__  
+Long idLinha  
 
-Importa itinerarios da API [@GET] **http://localhost:8082/mobilidade/itinerario/import**
+Importa linhas da API [@GET]  
+**http://localhost:8082/mobilidade/linhas/import**
+
+Importa itinerarios da API por Linha  
+[@GET] **http://localhost:8082/mobilidade/itinerario/import/{idLinha}**  
+__Params__ 
+Long idLinha  
 
 ---
