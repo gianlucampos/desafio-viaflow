@@ -23,11 +23,11 @@ public class PontoTransporteService {
     private LinhaTransporteRepository linhaRepository;
 
     //Busca da API os Itinerarios de ônibus
-    public void importItinerario() {
+    public void importItinerario(Long idLinha) {
         try {
             MobilidadeClient cliente = new MobilidadeClient();
             //Buscar por Id da linha informado
-            ItinerarioDTO itinerarioDTO = cliente.buscaItinerario();
+            ItinerarioDTO itinerarioDTO = cliente.buscaItinerario(idLinha);
 
             for (PontoTransporteDTO pontoDTO : itinerarioDTO.getPontos()) {
                 PontoTransporte ponto = pontoRepository.findByIndiceAndLinha(
@@ -51,6 +51,10 @@ public class PontoTransporteService {
 
     public List<PontoTransporte> listAll() {
         return pontoRepository.findAll();
+    }
+
+    public List<PontoTransporte> findByLinha(Long idLinha) {
+        return pontoRepository.findByLinha(idLinha);
     }
 
 }

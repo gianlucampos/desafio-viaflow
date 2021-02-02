@@ -49,11 +49,11 @@ public class MobilidadeClient {
 
     }
 
-    public ItinerarioDTO buscaItinerario() throws Exception {
+    public ItinerarioDTO buscaItinerario(Long idLinha) throws Exception {
         WebTarget resource = this.client.target(URL_BASE).path("php/facades/process.php");
         Map<String, Object> templateValues = new HashMap<>();
         templateValues.put("a", "il");
-        templateValues.put("p", "5566");
+        templateValues.put("p", idLinha);
         //Por algum motivo o resolveTemplates não adiciona os params
         for (Map.Entry<String, Object> query : templateValues.entrySet()) {
             resource = resource.queryParam(query.getKey(), query.getValue());
@@ -73,10 +73,9 @@ public class MobilidadeClient {
                 pontos.add(pontoDTO);
             }
         }
-        String idLinha = nodo.get("idlinha").asText();
         String nome = nodo.get("nome").asText();
         String codigo = nodo.get("codigo").asText();
-        ItinerarioDTO itinerarioDTO = new ItinerarioDTO(idLinha, codigo, nome, pontos);
+        ItinerarioDTO itinerarioDTO = new ItinerarioDTO(idLinha.toString(), codigo, nome, pontos);
         return itinerarioDTO;
 
     }

@@ -66,6 +66,15 @@ public class MobilidadeController {
         }
         return ResponseEntity.ok(pontos);
     }
+    
+    @GetMapping(path = "itinerario/{idLinha}")
+    public ResponseEntity listItinerarioByLinha(@PathVariable("idLinha") Long idLinha) {
+        List<PontoTransporte> pontos = servicePonto.findByLinha(idLinha);
+        if (pontos.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return ResponseEntity.ok(pontos);
+    }
 
     @GetMapping(path = "linhas/import")
     public ResponseEntity testaImportLinhas() {
@@ -78,10 +87,10 @@ public class MobilidadeController {
         }
     }
 
-    @GetMapping(path = "itinerario/import")
-    public ResponseEntity testaImportItinerario() {
+    @GetMapping(path = "itinerario/import/{idLinha}")
+    public ResponseEntity testaImportItinerario(@PathVariable("idLinha") Long idLinha) {
         try {
-            servicePonto.importItinerario();
+            servicePonto.importItinerario(idLinha);
             return new ResponseEntity(HttpStatus.OK);
         } catch (Exception ex) {
             ex.printStackTrace();
