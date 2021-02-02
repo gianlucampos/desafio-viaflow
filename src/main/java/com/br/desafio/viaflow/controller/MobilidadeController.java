@@ -41,7 +41,7 @@ public class MobilidadeController {
 
     @GetMapping(path = "linhas/{nome}")
     public ResponseEntity listLinhasTransporte(@PathVariable("nome") String nome) {
-        List<LinhaTransporte> linhas = serviceLinha.findByName(nome);
+        List<LinhaTransporte> linhas = serviceLinha.findByName("%" + nome + "%");
         if (linhas.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }

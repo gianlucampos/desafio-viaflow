@@ -18,7 +18,7 @@ public interface LinhaTransporteRepository extends JpaRepository<LinhaTransporte
     @Override
     public Optional<LinhaTransporte> findById(Long id);
 
-    @Query("SELECT l FROM LinhaTransporte l WHERE lower(l.nome) like :nome")
+    @Query("SELECT l FROM LinhaTransporte l WHERE lower(l.nome) like lower(:nome)")
     public List<LinhaTransporte> findByName(@Param("nome") String nome);
 
     @Query(value = "SELECT l.* FROM pontotransporte p INNER JOIN linhatransporte l ON l.id = p.linhatransporteid "
